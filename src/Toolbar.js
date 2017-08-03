@@ -3,6 +3,9 @@ import React from 'react';
 import cn from 'classnames';
 import message from './utils/messages';
 import { navigate } from './utils/constants';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import Chip from 'material-ui/Chip';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -24,28 +27,27 @@ class Toolbar extends React.Component {
     return (
       <div className='rbc-toolbar'>
         <span className='rbc-btn-group'>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.TODAY)}
-          >
+          <FlatButton
+            primary={true}
+             onTouchTap={this.navigate.bind(null, navigate.TODAY)}>
             {messages.today}
-          </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
+          </FlatButton>
+
+          <FlatButton
+            secondary={true}
+             onTouchTap={this.navigate.bind(null, navigate.PREVIOUS)}>
             {messages.previous}
-          </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.NEXT)}
+          </FlatButton>
+          <FlatButton
+            secondary={true}
+            onTouchTap={this.navigate.bind(null, navigate.NEXT)}
           >
             {messages.next}
-          </button>
+          </FlatButton>
         </span>
 
         <span className='rbc-toolbar-label'>
-          { label }
+          <Chip>{label}</Chip>
         </span>
 
         <span className='rbc-btn-group'>
@@ -72,12 +74,14 @@ class Toolbar extends React.Component {
     if (viewNames.length > 1) {
       return (
         viewNames.map(name =>
-          <button type='button' key={name}
-            className={cn({'rbc-active': view === name})}
-            onClick={this.view.bind(null, name)}
-          >
-            {messages[name]}
-          </button>
+                      <FlatButton
+                        secondary={true}
+                        key={name}
+                        style={{marginLeft: 10}}
+                        className={cn({'rbc-active': view === name})}
+                        onTouchTap={this.view.bind(null, name)}>
+                       {messages[name]}
+                     </FlatButton>
         )
       )
     }

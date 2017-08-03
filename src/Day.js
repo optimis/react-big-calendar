@@ -3,6 +3,7 @@ import React from 'react';
 import dates from './utils/dates';
 import TimeGrid from './TimeGrid';
 import { navigate } from './utils/constants';
+import Paper from 'material-ui/Paper';
 
 class Day extends React.Component {
   static propTypes = {
@@ -14,7 +15,9 @@ class Day extends React.Component {
     let range = Day.range(date)
 
     return (
-      <TimeGrid {...props} range={range} eventOffset={10} />
+      <Paper zDepth={2}>
+        <TimeGrid {...props} range={range} eventOffset={10} />
+      </Paper>
     );
   }
 }

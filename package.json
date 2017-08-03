@@ -1,6 +1,6 @@
 {
   "name": "react-big-calendar",
-  "version": "0.14.4",
+  "version": "0.14.5",
   "description": "Calendar! with events",
   "author": "Jason Quense <monastic.panic@gmail.com>",
   "repository": "intljusticemission/react-big-calendar",
@@ -81,9 +81,11 @@
     "dom-helpers": "^2.3.0 || ^3.0.0",
     "invariant": "^2.1.0",
     "lodash": "^4.17.4",
+    "material-ui": "^0.18.7",
     "prop-types": "^15.5.8",
     "react-overlays": "^0.7.0",
     "react-prop-types": "^0.4.0",
+    "react-tap-event-plugin": "^2.0.1",
     "uncontrollable": "^3.3.1 || ^4.0.0",
     "warning": "^2.0.0"
   }

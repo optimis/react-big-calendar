@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import uncontrollable from 'uncontrollable';
 import cn from 'classnames';
 import {
@@ -537,6 +538,7 @@ class Calendar extends React.Component {
    let ToolbarToRender = components.toolbar || Toolbar
 
    return (
+     <MuiThemeProvider>
      <div
        {...elementProps}
        className={cn('rbc-calendar', className, {
@@ -572,6 +574,7 @@ class Calendar extends React.Component {
          onShowMore={this._showMore}
        />
      </div>
+     </MuiThemeProvider>
    );
  }
 
