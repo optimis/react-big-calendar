@@ -6,6 +6,7 @@ import { navigate } from './utils/constants';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chip from 'material-ui/Chip';
+import { blue300 } from 'material-ui/styles/colors';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -22,7 +23,7 @@ class Toolbar extends React.Component {
   render() {
     let { messages, label } = this.props;
 
-    messages = message(messages)
+    messages = message(messages);
 
     return (
       <div className='rbc-toolbar'>
@@ -34,12 +35,10 @@ class Toolbar extends React.Component {
           </FlatButton>
 
           <FlatButton
-            secondary={true}
              onTouchTap={this.navigate.bind(null, navigate.PREVIOUS)}>
             {messages.previous}
           </FlatButton>
           <FlatButton
-            secondary={true}
             onTouchTap={this.navigate.bind(null, navigate.NEXT)}
           >
             {messages.next}
@@ -75,7 +74,6 @@ class Toolbar extends React.Component {
       return (
         viewNames.map(name =>
                       <FlatButton
-                        secondary={true}
                         key={name}
                         style={{marginLeft: 10}}
                         className={cn({'rbc-active': view === name})}
