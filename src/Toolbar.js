@@ -5,8 +5,11 @@ import message from './utils/messages';
 import { navigate } from './utils/constants';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
 import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
+import BackBtn from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
+import ForwardBtn from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -28,21 +31,20 @@ class Toolbar extends React.Component {
     return (
       <div className='rbc-toolbar'>
         <span className='rbc-btn-group'>
-          <FlatButton
-            primary={true}
-             onTouchTap={this.navigate.bind(null, navigate.TODAY)}>
-            {messages.today}
-          </FlatButton>
+
 
           <FlatButton
-             onTouchTap={this.navigate.bind(null, navigate.PREVIOUS)}>
-            {messages.previous}
-          </FlatButton>
+             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+             icon={<BackBtn />}
+          />
           <FlatButton
-            onTouchTap={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </FlatButton>
+            primary={true}
+            label={messages.today}
+            onClick={this.navigate.bind(null, navigate.TODAY)} />
+          <FlatButton
+            onClick={this.navigate.bind(null, navigate.NEXT)}
+            icon={<ForwardBtn />}
+          />
         </span>
 
         <span className='rbc-toolbar-label'>
@@ -72,14 +74,13 @@ class Toolbar extends React.Component {
 
     if (viewNames.length > 1) {
       return (
-        viewNames.map(name =>
+        ["month", "week", "day", "agenda"].map(name =>
                       <FlatButton
                         key={name}
                         style={{marginLeft: 10}}
+                        label={messages[name]}
                         className={cn({'rbc-active': view === name})}
-                        onTouchTap={this.view.bind(null, name)}>
-                       {messages[name]}
-                     </FlatButton>
+                        onClick={this.view.bind(null, name)} />
         )
       )
     }
